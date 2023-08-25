@@ -2,57 +2,45 @@
 
 use dosamigos\ckeditor\CKEditor;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap4\ActiveForm;
 
-/** @var yii\web\View $this */
-/** @var common\models\Product $model */
-/** @var yii\widgets\ActiveForm $form */
+/* @var $this yii\web\View */
+/* @var $model common\models\Product */
+/* @var $form yii\bootstrap4\ActiveForm */
 ?>
 
 <div class="product-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        'options' => ['enctype' => 'multipart/form-data']
+    ]); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'description')->widget(CKEditor::className(), [
+    <?= $form->field($model, 'description')->widget(CKEditor::class, [
         'options' => ['rows' => 6],
         'preset' => 'basic'
-
-    ])
-    ?>
-
+    ]) ?>
 
     <?= $form->field($model, 'imageFile', [
         'template' => '
-            
-             <div class="input-group mb-3">
-                 <div class="custom-file">
-                 {input}
-                    <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                        {label}   
+                <div class="custom-file">
+                    {input}
+                    {label}
                     {error}
-                 </div>
-            </div>
-                    ',
-        'labelOptions'=>['class'=>'custom-file-label'],
-        'inputOptions'=>['class'=>'custom-file-input']
-    ])->textInput(['type'=>'file']) ?>
+                </div>
+            ',
+        'labelOptions' => ['class' => 'custom-file-label'],
+        'inputOptions' => ['class' => 'custom-file-input']
+    ])->textInput(['type' => 'file']) ?>
 
     <?= $form->field($model, 'price')->textInput([
         'maxlength' => true,
-        'type' => 'number'
+        'type' => 'number',
+        'step' => '0.01'
     ]) ?>
 
     <?= $form->field($model, 'status')->checkbox() ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'created_by')->textInput() ?>
-
-    <?= $form->field($model, 'updated_by')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
