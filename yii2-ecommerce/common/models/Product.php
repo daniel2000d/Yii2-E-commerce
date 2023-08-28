@@ -174,7 +174,6 @@ class Product extends \yii\db\ActiveRecord
         return Yii::$app->params['frontendUrl'] . '/img/no_image_available.png';
     }
 
-
     /**
      * Get short version of the description
      *

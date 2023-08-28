@@ -50,6 +50,9 @@ return [
 //            'rules' => [
 //            ],
 //        ],
+    'formatter'=>[
+        'datetimeFormat'=>"php:d/m/Y H:i"
+    ]
 
     ],
     'params' => $params,
