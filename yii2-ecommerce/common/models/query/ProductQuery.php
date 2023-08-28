@@ -31,4 +31,21 @@ class ProductQuery extends \yii\db\ActiveQuery
     {
         return parent::one($db);
     }
+
+    /**
+     * @return \common\models\query\ProductQuery
+     */
+    /**
+     * @return \common\models\query\ProductQuery
+     * @return ProductQuery*/
+
+    public function published()
+    {
+        return $this->andWhere(['status' => 1]);
+    }
+
+    public function id($id)
+    {
+        return $this->andWhere(['id' => $id]);
+    }
 }
