@@ -35,7 +35,7 @@ AppAsset::register($this);
                 <!--            <div class="sidebar-brand-icon rotate-n-15">-->
                 <!--                <i class="fas fa-laugh-wink"></i>-->
                 <!--            </div>-->
-                <div class="sidebar-brand-text mx-3">Yii2 E-commerce</div>
+                <div class="sidebar-brand-text mx-3"> E-commerce</div>
             </a>
 
             <!-- Divider -->
@@ -61,13 +61,7 @@ AppAsset::register($this);
                 </a>
             </li>
 
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="<?php echo \yii\helpers\Url::to(['/order/index']) ?>">
-                    <i class="fas fa-money-check-alt"></i>
-                    <span>Orders</span>
-                </a>
-            </li>
+
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
