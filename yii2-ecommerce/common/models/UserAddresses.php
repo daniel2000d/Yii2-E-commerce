@@ -5,7 +5,7 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "{{%user_adresses}}".
+ * This is the model class for table "{{%user_addresses}}".
  *
  * @property int $id
  * @property int $user_id
@@ -14,6 +14,8 @@ use Yii;
  * @property string $state
  * @property string $country
  * @property string|null $zipcode
+ *
+ * @property User $user
  */
 class UserAddresses extends \yii\db\ActiveRecord
 {
@@ -34,6 +36,7 @@ class UserAddresses extends \yii\db\ActiveRecord
             [['user_id', 'address', 'city', 'state', 'country'], 'required'],
             [['user_id'], 'integer'],
             [['address', 'city', 'state', 'country', 'zipcode'], 'string', 'max' => 255],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 
@@ -51,6 +54,16 @@ class UserAddresses extends \yii\db\ActiveRecord
             'country' => 'Country',
             'zipcode' => 'Zipcode',
         ];
+    }
+
+    /**
+     * Gets query for [[User]].
+     *
+     * @return \yii\db\ActiveQuery|\common\models\query\UserQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
     /**

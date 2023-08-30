@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use common\models\Product;
+use common\models\UserAddresses;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -16,6 +17,7 @@ use common\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
+
 
 /**
  * Site controller
@@ -242,4 +244,20 @@ class SiteController extends Controller
             'model' => $model
         ]);
     }
+    public function actionProfile(){
+        /** @var \common\models\User $user*/
+        $user=Yii::$app->user->identity;
+        $userAddresses=$user->adresses;
+        $userAddress=new UserAddresses();
+        $userAddress->user_id=$user->id;
+        if(!empty($userAdresses)){
+        $userAddress=$userAddresses[0];
+        }
+        return $this->render('profile', [
+            'user'=>$user,
+            'userAdress'=>$userAddress
+
+        ]);
+    }
+
 }

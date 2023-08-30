@@ -1,5 +1,4 @@
 <?php
-
 namespace common\models;
 
 use Yii;
@@ -12,18 +11,21 @@ use yii\web\IdentityInterface;
  * User model
  *
  * @property integer $id
- * @property string $username
  * @property string $firstname
  * @property string $lastname
+ * @property string $username
  * @property string $password_hash
  * @property string $password_reset_token
  * @property string $verification_token
  * @property string $email
  * @property string $auth_key
  * @property integer $status
+ * @property integer $admin
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password write-only password
+ *
+ * @property \common\models\UserAddresses[] $addresses
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -32,6 +34,9 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_ACTIVE = 10;
 
     public const SCENARIO_UPDATE = 'update';
+
+    public $password;
+    public $password_repeat;
 
     /**
      * {@inheritdoc}
@@ -47,8 +52,15 @@ class User extends ActiveRecord implements IdentityInterface
     public function behaviors()
     {
         return [
-            TimestampBehavior::class,
+            TimestampBehavior::className(),
         ];
+    }
+
+    public function scenarios()
+    {
+        return array_merge(parent::scenarios(), [
+            self::SCENARIO_UPDATE => ['firstname', 'lastname', 'email', 'username', 'password', 'password_repeat']
+        ]);
     }
 
     /**
@@ -57,8 +69,15 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
+            [['firstname', 'lastname', 'username', 'email'], 'required'],
+            [['firstname', 'lastname', 'username', 'email'], 'string', 'max' => 255],
             ['status', 'default', 'value' => self::STATUS_INACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
+            ['password', 'string', 'min' => 8],
+            ['admin', 'default', 'value' => 0],
+            ['password_repeat', 'compare', 'compareAttribute' => 'password'],
+            ['username', 'unique', 'targetClass' => self::class, 'message' => 'This username has already been taken.'],
+            ['email', 'unique', 'targetClass' => self::class, 'message' => 'This email address has already been taken.'],
         ];
     }
 
@@ -113,8 +132,7 @@ class User extends ActiveRecord implements IdentityInterface
      * @param string $token verify email token
      * @return static|null
      */
-    public static function findByVerificationToken($token)
-    {
+    public static function findByVerificationToken($token) {
         return static::findOne([
             'verification_token' => $token,
             'status' => self::STATUS_INACTIVE
@@ -133,7 +151,7 @@ class User extends ActiveRecord implements IdentityInterface
             return false;
         }
 
-        $timestamp = (int)substr($token, strrpos($token, '_') + 1);
+        $timestamp = (int) substr($token, strrpos($token, '_') + 1);
         $expire = Yii::$app->params['user.passwordResetTokenExpire'];
         return $timestamp + $expire >= time();
     }
@@ -215,10 +233,37 @@ class User extends ActiveRecord implements IdentityInterface
         $this->password_reset_token = null;
     }
 
-    public function GetDisplayName()
+    public function getDisplayName()
     {
-        $fullName = trim($this->firstname . '' . $this->lastname);
+        $fullName = trim($this->firstname.' '.$this->lastname);
         return $fullName ?: $this->email;
     }
-}
 
+    /**
+     * @return mixed
+
+     */
+    public function getAddresses()
+    {
+        return $this->hasMany(UserAddresses::class, ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \common\models\UserAddresses|null
+
+     */
+    public function getAddress(): ?UserAddresses
+    {
+        $address = $this->addresses[0] ?? new UserAddresses();
+        $address->user_id = $this->id;
+        return $address;
+    }
+
+    public function afterValidate()
+    {
+        parent::afterValidate();
+        if ($this->password) {
+            $this->password_hash = Yii::$app->security->generatePasswordHash($this->password);
+        }
+    }
+}
