@@ -39,7 +39,7 @@ return [
         ],
         'assetManager'=>[
             'bundles'=>[
-                \Yii\bootstrap\BootstrapAsset::class=>false
+                \Yii\bootstrap5\BootstrapAsset::class=>false
             ]
         ],
 

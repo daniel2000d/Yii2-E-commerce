@@ -7,9 +7,7 @@
 /** @var \common\models\Product $model */
 ?>
 <div class="card h-100">
-    <a href="#" class="img-wrapper">
-        <img class="card-img-top" src="<?php echo $model->getImageUrl() ?>" alt="">
-    </a>
+    <img class="card-img-top" src="https://dummyimage.com/550x400/dee2e6/6c757d.jpg" alt="..."/>
     <div class="card-body">
         <h5 class="card-title">
             <a href="#" class="text-dark"><?php echo \yii\helpers\StringHelper::truncateWords($model->name, 20) ?></a>
