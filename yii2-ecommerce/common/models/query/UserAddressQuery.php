@@ -3,11 +3,11 @@
 namespace common\models\query;
 
 /**
- * This is the ActiveQuery class for [[\common\models\UserAddresses]].
+ * This is the ActiveQuery class for [[\common\models\UserAddress]].
  *
- * @see \common\models\UserAddresses
+ * @see \common\models\UserAddress
  */
-class UserAddressesQuery extends \yii\db\ActiveQuery
+class UserAddressQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +16,7 @@ class UserAddressesQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return \common\models\UserAddresses[]|array
+     * @return \common\models\UserAddress[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class UserAddressesQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return \common\models\UserAddresses|array|null
+     * @return \common\models\UserAddress|array|null
      */
     public function one($db = null)
     {

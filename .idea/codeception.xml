@@ -19,6 +19,21 @@
           <option name="path" value="$PROJECT_DIR$/yii2-ecommerce/tests" />
         </Configuration>
         <Configuration>
+          <option name="path" value="$PROJECT_DIR$/yii2-ecommerce/tests" />
+        </Configuration>
+        <Configuration>
+          <option name="path" value="$PROJECT_DIR$/yii2-ecommerce/tests" />
+        </Configuration>
+        <Configuration>
+          <option name="path" value="$PROJECT_DIR$/yii2-ecommerce/tests" />
+        </Configuration>
+        <Configuration>
+          <option name="path" value="$PROJECT_DIR$/yii2-ecommerce/tests" />
+        </Configuration>
+        <Configuration>
+          <option name="path" value="$PROJECT_DIR$/yii2-ecommerce/tests" />
+        </Configuration>
+        <Configuration>
           <option name="namespace" value="common\tests" />
           <option name="path" value="$PROJECT_DIR$/yii2-ecommerce/common/tests" />
           <option name="mySuiteNamespaces">

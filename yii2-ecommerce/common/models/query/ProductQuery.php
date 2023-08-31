@@ -35,10 +35,6 @@ class ProductQuery extends \yii\db\ActiveQuery
     /**
      * @return \common\models\query\ProductQuery
      */
-    /**
-     * @return \common\models\query\ProductQuery
-     * @return ProductQuery*/
-
     public function published()
     {
         return $this->andWhere(['status' => 1]);

@@ -171,7 +171,7 @@ class Product extends \yii\db\ActiveRecord
             return Yii::$app->params['frontendUrl'] . '/storage' . $imagePath;
         }
 
-        return Yii::$app->params['frontendUrl'] . '/img/no_photo.svg';
+//        return Yii::$app->params['frontendUrl'] . '/img/no_photo.svg';
     }
 
     /**

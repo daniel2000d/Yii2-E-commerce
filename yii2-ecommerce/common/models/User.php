@@ -25,7 +25,7 @@ use yii\web\IdentityInterface;
  * @property integer $updated_at
  * @property string $password write-only password
  *
- * @property \common\models\UserAddresses[] $addresses
+ * @property \common\models\UserAddress[] $addresses
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -245,16 +245,16 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getAddresses()
     {
-        return $this->hasMany(UserAddresses::class, ['user_id' => 'id']);
+        return $this->hasMany(UserAddress::class, ['user_id' => 'id']);
     }
 
     /**
-     * @return \common\models\UserAddresses|null
+     * @return \common\models\UserAddress|null
 
      */
-    public function getAddress(): ?UserAddresses
+    public function getAddress(): ?UserAddress
     {
-        $address = $this->addresses[0] ?? new UserAddresses();
+        $address = $this->addresses[0] ?? new UserAddress();
         $address->user_id = $this->id;
         return $address;
     }

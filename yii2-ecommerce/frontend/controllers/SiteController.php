@@ -3,12 +3,13 @@
 namespace frontend\controllers;
 
 use common\models\Product;
-use common\models\UserAddresses;
+use common\models\UserAddress;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
 use yii\base\InvalidArgumentException;
 use yii\data\ActiveDataProvider;
+use yii\debug\models\search\User;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -244,20 +245,37 @@ class SiteController extends Controller
             'model' => $model
         ]);
     }
-    public function actionProfile(){
-        /** @var \common\models\User $user*/
-        $user=Yii::$app->user->identity;
-        $userAddresses=$user->adresses;
-        $userAddress=new UserAddresses();
-        $userAddress->user_id=$user->id;
-        if(!empty($userAdresses)){
-        $userAddress=$userAddresses[0];
-        }
+
+    public function actionProfile()
+    {
+        /** @var \common\models\User $user */
+        $user = Yii::$app->user->identity;
+        $userAddresses = $user->addresses;
+        $userAddress = $user->getAddress() ?: new UserAddress();
+        $userAddress->user_id = $user->id;
+
         return $this->render('profile', [
-            'user'=>$user,
-            'userAdress'=>$userAddress
+            'user' => $user,
+            'userAdress' => $userAddress
 
         ]);
+    }
+
+    public function actionUpdateAddress()
+    {
+        $user = Yii::$app->user->identity;
+        $userAddress = $user->getAddress();
+        if ($userAddress->load(Yii::$app->request0->post()) && $userAddress->save()) {
+            Yii::$app->session->setFlash('success', 'Your address was succesfully updated');
+            return $this->redirect(['profile']);
+        }
+        return $this->renderAjax('user_address', [
+            'userAddress' => $userAddress,
+
+
+        ]);
+
+
     }
 
 }

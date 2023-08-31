@@ -38,6 +38,9 @@ AppAsset::register($this);
                 'class' => 'navbar-expand-lg navbar-dark bg-dark fixed-top',
             ],
         ]);
+        $menuItems[] = ['label' =>'Cart', 'url' => ['/cart/index']];
+
+
 
         if (Yii::$app->user->isGuest) {
 //            $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
