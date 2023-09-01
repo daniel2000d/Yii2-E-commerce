@@ -20,9 +20,7 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 
 
-/**
- * Site controller
- */
+
 class SiteController extends \frontend\base\Controller
 {
     /**
@@ -73,8 +71,6 @@ class SiteController extends \frontend\base\Controller
     }
 
     /**
-     * Displays homepage.
-     *
      * @return mixed
      */
     public function actionIndex()
@@ -88,8 +84,6 @@ class SiteController extends \frontend\base\Controller
     }
 
     /**
-     * Logs in a user.
-     *
      * @return mixed
      */
     public function actionLogin()
@@ -111,8 +105,6 @@ class SiteController extends \frontend\base\Controller
     }
 
     /**
-     * Logs out the current user.
-     *
      * @return mixed
      */
     public function actionLogout()
@@ -123,21 +115,18 @@ class SiteController extends \frontend\base\Controller
     }
 
     /**
-     * Displays contact page.
-     *
+
      * @return mixed
      */
 
     /**
-     * Displays about page.
-     *
+
      * @return mixed
      */
 
 
     /**
-     * Signs user up.
-     *
+
      * @return mixed
      */
     public function actionSignup()
@@ -154,8 +143,6 @@ class SiteController extends \frontend\base\Controller
     }
 
     /**
-     * Requests password reset.
-     *
      * @return mixed
      */
     public function actionRequestPasswordReset()
@@ -177,8 +164,7 @@ class SiteController extends \frontend\base\Controller
     }
 
     /**
-     * Resets password.
-     *
+
      * @param string $token
      * @return mixed
      * @throws BadRequestHttpException
@@ -203,8 +189,8 @@ class SiteController extends \frontend\base\Controller
     }
 
     /**
-     * Verify email address
-     *
+
+
      * @param string $token
      * @return yii\web\Response
      * @throws BadRequestHttpException
@@ -226,7 +212,7 @@ class SiteController extends \frontend\base\Controller
     }
 
     /**
-     * Resend verification email
+
      *
      * @return mixed
      */

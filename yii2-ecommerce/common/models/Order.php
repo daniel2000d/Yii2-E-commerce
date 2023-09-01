@@ -18,7 +18,7 @@ use Yii;
  * @property int|null $created_by
  */
 class Order extends \yii\db\ActiveRecord
-{
+{       const STATUS_DRAFT=0;
     /**
      * {@inheritdoc}
      */

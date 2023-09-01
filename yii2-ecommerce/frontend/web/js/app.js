@@ -1,6 +1,4 @@
-/**
- * Created by TheCodeholic on 12/12/2020.
- */
+
 import "../scss/style.scss";
 
 $(function(){

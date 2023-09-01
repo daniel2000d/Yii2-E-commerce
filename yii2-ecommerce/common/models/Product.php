@@ -177,7 +177,7 @@ class Product extends \yii\db\ActiveRecord
     /**
      * Get short version of the description
      *
-     *
+
      */
     public function getShortDescription()
     {

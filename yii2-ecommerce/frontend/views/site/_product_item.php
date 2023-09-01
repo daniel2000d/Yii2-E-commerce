@@ -1,9 +1,6 @@
 <?php
-/**
- * User: TheCodeholic
- * Date: 12/12/2020
- * Time: 11:53 AM
- */
+
+
 /** @var \common\models\Product $model */
 ?>
 <div class="card h-100">
@@ -18,7 +15,7 @@
         </div>
     </div>
     <div class="card-footer text-right">
-        <a href="<?php echo \yii\helpers\Url::to(['/cart/adda']) ?>" class="btn btn-primary btn-add-to-cart">
+        <a href="<?php echo \yii\helpers\Url::to(['/cart/add']) ?>" class="btn btn-primary btn-add-to-cart">
             Add to Cart
         </a>
     </div>

@@ -1,9 +1,5 @@
 <?php
-/**
- * User: TheCodeholic
- * Date: 12/12/2020
- * Time: 3:25 PM
- */
+
 
 namespace frontend\controllers;
 
@@ -14,11 +10,8 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
 
-/**
- * Class ProfileController
- *
 
- */
+
 class ProfileController extends \frontend\base\Controller
 {
     public function behaviors()

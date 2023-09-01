@@ -1,9 +1,6 @@
 <?php
-/**
- * User: TheCodeholic
- * Date: 11/28/2020
- * Time: 9:45 AM
- */
+
+
 
 namespace common\grid;
 
@@ -11,12 +8,7 @@ namespace common\grid;
 use Yii;
 use yii\helpers\Html;
 
-/**
- * Class ActionColumn
- *
- *
- *
- */
+
 class ActionColumn extends \yii\grid\ActionColumn
 {
     protected function initDefaultButtons()
