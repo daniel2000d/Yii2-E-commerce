@@ -14,8 +14,8 @@ use yii\helpers\Html;
 /**
  * Class ActionColumn
  *
- * @author  Zura Sekhniashvili <zurasekhniashvili@gmail.com>
- * @package app\grid
+ *
+ *
  */
 class ActionColumn extends \yii\grid\ActionColumn
 {

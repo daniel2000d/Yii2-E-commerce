@@ -10,7 +10,7 @@ use yii\bootstrap4\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
-
+$cartItemCount=$this->params['cartItemCount'];
 
 
 
@@ -38,7 +38,12 @@ AppAsset::register($this);
                 'class' => 'navbar-expand-lg navbar-dark bg-dark fixed-top',
             ],
         ]);
-        $menuItems[] = ['label' =>'Cart', 'url' => ['/cart/index']];
+        $menuItems = [
+                       [ 'label' =>'Cart <span id="cart-quantity" class="badge badge-danger">'.$cartItemCount.'</span>',
+                        'url' => ['/cart/index'],
+                        'encode'=>false
+        ],
+        ];
 
 
 
