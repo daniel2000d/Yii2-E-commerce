@@ -11,6 +11,8 @@ use common\models\Product;
 use PayPalCheckoutSdk\Core\PayPalHttpClient;
 use PayPalCheckoutSdk\Core\SandboxEnvironment;
 use PayPalCheckoutSdk\Orders\OrdersGetRequest;
+use PayPalCheckoutSdk\Payments\AuthorizationsCaptureRequest;
+use PayPalCheckoutSdk\Payments\AuthorizationsGetRequest;
 use Yii;
 use yii\filters\ContentNegotiator;
 use yii\filters\VerbFilter;
@@ -20,9 +22,6 @@ use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
 /**
-
- *
-
  */
 class CartController extends \frontend\base\Controller
 {
@@ -219,11 +218,11 @@ class CartController extends \frontend\base\Controller
     public function actionSubmitPayment($orderId)
     {
         $where = ['id' => $orderId, 'status' => Order::STATUS_DRAFT];
-        if (!isGuest()){
+        if (!isGuest()) {
             $where['created_by'] = currUserId();
         }
         $order = Order::findOne($where);
-        if (!$order){
+        if (!$order) {
             throw new NotFoundHttpException();
         }
 
@@ -252,7 +251,7 @@ class CartController extends \frontend\base\Controller
                 $order->status = Order::STATUS_PAID;
             }
             $order->transaction_id = $response->result->purchase_units[0]->payments->captures[0]->id;
-            if  ($order->save()) {
+            if ($order->save()) {
                 if (!$order->sendEmailToVendor()) {
                     Yii::error("Email to the vendor is not sent");
                 }
@@ -264,13 +263,15 @@ class CartController extends \frontend\base\Controller
                     'success' => true
                 ];
             } else {
-                Yii::error("Order was not saved. Data: ".VarDumper::dumpAsString($order->toArray()).
-                    '. Errors: '.VarDumper::dumpAsString($order->errors));
+                Yii::error("Order was not saved. Data: " . VarDumper::dumpAsString($order->toArray()) .
+                    '. Errors: ' . VarDumper::dumpAsString($order->errors));
             }
         }
 
         throw new BadRequestHttpException();
+        $environment = new SandboxEnvironment(Yii::$app->params['paypalClientId'], Yii::$app->params['paypalSecret']);
+        $client = new PayPalHttpClient($environment);
+        $client->execute(new AuthorizationsGetRequest($order->transaction_id));
 
-        // todo Validate the transaction ID. It must not be used and it must be valid transaction ID in paypal.
     }
 }

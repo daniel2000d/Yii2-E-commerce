@@ -6,6 +6,8 @@ use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\helpers\FileHelper;
+use yii\helpers\StringHelper;
+use yii\helpers\VarDumper;
 
 /**
  * This is the model class for table "{{%products}}".
@@ -88,8 +90,7 @@ class Product extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[CartItem]].
-     *
+
      * @return \yii\db\ActiveQuery|\common\models\query\CartItemQuery
      */
     public function getCartItems()
@@ -98,8 +99,6 @@ class Product extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[OrderItem]].
-     *
      * @return \yii\db\ActiveQuery|\common\models\query\OrderItemQuery
      */
     public function getOrderItems()
@@ -108,7 +107,6 @@ class Product extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[CreatedBy]].
      *
      * @return \yii\db\ActiveQuery|\common\models\query\UserQuery
      */
@@ -118,7 +116,6 @@ class Product extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[UpdatedBy]].
      *
      * @return \yii\db\ActiveQuery|\common\models\query\UserQuery
      */
@@ -175,13 +172,12 @@ class Product extends \yii\db\ActiveRecord
     }
 
     /**
-     * Get short version of the description
      *
 
      */
     public function getShortDescription()
     {
-        return \yii\helpers\StringHelper::truncateWords(strip_tags($this->description), 30);
+        return StringHelper::truncateWords(strip_tags($this->description), 30);
     }
 
     public function afterDelete()
