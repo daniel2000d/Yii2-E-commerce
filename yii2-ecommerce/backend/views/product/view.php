@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
-    <?= \yii\helpers\VarDumper::dump($model,10,true);die();DetailView::widget([
+    <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',

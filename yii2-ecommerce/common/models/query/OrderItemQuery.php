@@ -7,7 +7,7 @@ namespace common\models\query;
  *
  * @see \common\models\OrderItems
  */
-class OrderItemsQuery extends \yii\db\ActiveQuery
+class OrderItemQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +16,7 @@ class OrderItemsQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return \common\models\OrderItems[]|array
+     * @return \common\models\OrderItem[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class OrderItemsQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return \common\models\OrderItems|array|null
+     * @return \common\models\OrderItem|array|null
      */
     public function one($db = null)
     {
