@@ -134,6 +134,8 @@ class SiteController extends Controller
             'labels' => $labels,
             'countries' => $countryLabels,
             'bgColors' => $bgColors,
+            'countries' => ArrayHelper::getColumn($countriesData, 'country'),
+
             'countriesData' => ArrayHelper::getColumn($countriesData, 'total_price'),
         ]);
     }

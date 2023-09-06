@@ -21,7 +21,9 @@ class AppAsset extends AssetBundle
 
        "vendor/bootstrap/js/bootstrap.bundle.js",
         "vendor/jquery-easing/jquery.easing.min.js",
+        "vendor/chart.js/Chart.min.js",
         "js/sb-admin-2.min.js",
+
 
     ];
     public $depends = [

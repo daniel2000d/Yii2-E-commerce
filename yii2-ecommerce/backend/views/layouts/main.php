@@ -35,7 +35,7 @@ AppAsset::register($this);
                 <!--            <div class="sidebar-brand-icon rotate-n-15">-->
                 <!--                <i class="fas fa-laugh-wink"></i>-->
                 <!--            </div>-->
-                <div class="sidebar-brand-text mx-3"> E-commerce</div>
+                <div class="sidebar-brand-text mx-3">Yii2 E-commerce</div>
             </a>
 
             <!-- Divider -->
@@ -61,7 +61,13 @@ AppAsset::register($this);
                 </a>
             </li>
 
-
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo \yii\helpers\Url::to(['/order/index']) ?>">
+                    <i class="fas fa-money-check-alt"></i>
+                    <span>Orders</span>
+                </a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -97,7 +103,7 @@ AppAsset::register($this);
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                               <?php echo Yii::$app->user->identity->getDisplayName() ?>
+                                <?php echo Yii::$app->user->identity->getDisplayName() ?>
                             </span>
                                 <img class="img-profile rounded-circle"
                                      src="/img/undraw_profile.svg">
@@ -142,7 +148,7 @@ AppAsset::register($this);
                         </div>
 
                         <div class="col text-right">
-                            Created by <a href="https://github.com/" target="_blank">Vieru Daniel</a>
+                            Created by Vieru Daniel</>
                         </div>
                     </div>
                 </div>
@@ -183,7 +189,7 @@ AppAsset::register($this);
     </div>
 
     <?php $this->endBody() ?>
-
+    <?php echo $this->blocks['bodyEndScript'] ?? '' ?>
     </body>
     </html>
 <?php $this->endPage() ?>
