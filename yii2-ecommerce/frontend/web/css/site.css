@@ -101,3 +101,35 @@ a.desc:after {
 {
     text-decoration: none;
 }
+
+#cart-quantity{
+    background-color: #cc4848;
+}
+
+.nav-link{
+    color:white;
+}
+
+.navbar-brand{
+    color: white;
+    font-weight: bold;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.navbar-brand:hover{
+    color: white;
+}
+
+.img-wrapper {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+img {
+    width: auto;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0 auto;
+    display: block;
+}

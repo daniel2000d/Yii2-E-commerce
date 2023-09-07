@@ -12,7 +12,7 @@ $this->title = 'Login';
 ?>
 <div class="row">
     <div class="col-lg-6 d-none d-lg-block bg-login-image"
-         style="background-size: contain; background-repeat: no-repeat; background-image: url('/img/undraw_rocket.svg')"></div>
+         style="background-size: contain; background-repeat: no-repeat; background-image: url('/img/undraw_web_shopping_dd4l.svg')"></div>
     <div class="col-lg-6">
         <div class="p-5">
             <div class="text-center">

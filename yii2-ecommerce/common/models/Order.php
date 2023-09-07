@@ -6,21 +6,20 @@ use Yii;
 use yii\db\Exception;
 
 /**
-
- * @property int          $id
- * @property float        $total_price
- * @property int          $status
- * @property string       $firstname
- * @property string       $lastname
- * @property string       $email
- * @property string|null  $transaction_id
- * @property string|null  $paypal_order_id
- * @property int|null     $created_at
- * @property int|null     $created_by
+ * @property int $id
+ * @property float $total_price
+ * @property int $status
+ * @property string $firstname
+ * @property string $lastname
+ * @property string $email
+ * @property string|null $transaction_id
+ * @property string|null $paypal_order_id
+ * @property int|null $created_at
+ * @property int|null $created_by
  *
  * @property OrderAddress $orderAddress
- * @property OrderItem[]  $orderItems
- * @property User         $createdBy
+ * @property OrderItem[] $orderItems
+ * @property User $createdBy
  */
 class Order extends \yii\db\ActiveRecord
 {
@@ -48,7 +47,7 @@ class Order extends \yii\db\ActiveRecord
             [['email'], 'email'],
             [['status', 'created_at', 'created_by'], 'integer'],
             [['firstname', 'lastname'], 'string', 'max' => 45],
-            [['email', 'transaction_id','paypal_order_id'], 'string', 'max' => 255],
+            [['email', 'transaction_id', 'paypal_order_id'], 'string', 'max' => 255],
             [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
         ];
     }
@@ -73,8 +72,6 @@ class Order extends \yii\db\ActiveRecord
     }
 
     /**
-
-     *
      * @return \yii\db\ActiveQuery|\common\models\query\OrderAddressQuery
      */
     public function getOrderAddress()
@@ -91,8 +88,6 @@ class Order extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[CreatedBy]].
-     *
      * @return \yii\db\ActiveQuery|\common\models\query\UserQuery
      */
     public function getCreatedBy()
@@ -102,7 +97,7 @@ class Order extends \yii\db\ActiveRecord
 
     /**
      * {@inheritdoc}
-     * @return \common\models\query\OrderQuery the active query used by this AR class.
+     * @return \common\models\query\OrderQuery
      */
     public static function find()
     {

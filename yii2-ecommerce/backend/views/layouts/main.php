@@ -148,7 +148,7 @@ AppAsset::register($this);
                         </div>
 
                         <div class="col text-right">
-                            Created by Vieru Daniel</>
+                            Created Vieru Daniel</>
                         </div>
                     </div>
                 </div>

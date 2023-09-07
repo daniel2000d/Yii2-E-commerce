@@ -6,12 +6,9 @@ use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\helpers\FileHelper;
-use yii\helpers\StringHelper;
 use yii\helpers\VarDumper;
 
 /**
- * This is the model class for table "{{%products}}".
- *
  * @property int         $id
  * @property string      $name
  * @property string|null $description
@@ -90,7 +87,6 @@ class Product extends \yii\db\ActiveRecord
     }
 
     /**
-
      * @return \yii\db\ActiveQuery|\common\models\query\CartItemQuery
      */
     public function getCartItems()
@@ -107,7 +103,6 @@ class Product extends \yii\db\ActiveRecord
     }
 
     /**
-     *
      * @return \yii\db\ActiveQuery|\common\models\query\UserQuery
      */
     public function getCreatedBy()
@@ -116,7 +111,6 @@ class Product extends \yii\db\ActiveRecord
     }
 
     /**
-     *
      * @return \yii\db\ActiveQuery|\common\models\query\UserQuery
      */
     public function getUpdatedBy()
@@ -126,7 +120,7 @@ class Product extends \yii\db\ActiveRecord
 
     /**
      * {@inheritdoc}
-     * @return \common\models\query\ProductQuery the active query used by this AR class.
+     * @return \common\models\query\ProductQuery
      */
     public static function find()
     {
@@ -168,16 +162,15 @@ class Product extends \yii\db\ActiveRecord
             return Yii::$app->params['frontendUrl'] . '/storage' . $imagePath;
         }
 
-//        return Yii::$app->params['frontendUrl'] . '/img/no_image_available.png';
+        return Yii::$app->params['frontendUrl'] . '/img/no_image_available.png';
     }
 
     /**
-     *
-
+     * @return string
      */
     public function getShortDescription()
     {
-        return StringHelper::truncateWords(strip_tags($this->description), 30);
+        return \yii\helpers\StringHelper::truncateWords(strip_tags($this->description), 30);
     }
 
     public function afterDelete()

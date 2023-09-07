@@ -8,9 +8,6 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-/**
- * OrderController implements the CRUD actions for Order model.
- */
 class OrderController extends Controller
 {
     /**
@@ -32,8 +29,6 @@ class OrderController extends Controller
     }
 
     /**
-     * Lists all Order models.
-     *
      * @return string
      */
     public function actionIndex()
@@ -48,10 +43,9 @@ class OrderController extends Controller
     }
 
     /**
-     * Displays a single Order model.
-     * @param int $id ID
+     * @param int $id
      * @return string
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException
      */
     public function actionView($id)
     {
@@ -61,8 +55,6 @@ class OrderController extends Controller
     }
 
     /**
-     * Creates a new Order model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
@@ -83,11 +75,9 @@ class OrderController extends Controller
     }
 
     /**
-     * Updates an existing Order model.
-     * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException
      */
     public function actionUpdate($id)
     {
@@ -103,11 +93,9 @@ class OrderController extends Controller
     }
 
     /**
-     * Deletes an existing Order model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException
      */
     public function actionDelete($id)
     {
@@ -117,11 +105,10 @@ class OrderController extends Controller
     }
 
     /**
-     * Finds the Order model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $id ID
-     * @return Order the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
+
+     * @param int $id
+     * @return Order
+     * @throws NotFoundHttpException
      */
     protected function findModel($id)
     {

@@ -8,8 +8,6 @@ use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
 /**
- * User model
- *
  * @property integer $id
  * @property string $firstname
  * @property string $lastname
@@ -23,9 +21,9 @@ use yii\web\IdentityInterface;
  * @property integer $admin
  * @property integer $created_at
  * @property integer $updated_at
- * @property string $password write-only password
+ * @property string $password
  *
- * @property \common\models\UserAddress[] $addresses
+ * @property \common\models\UserAddress $addresses
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -59,7 +57,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function scenarios()
     {
         return array_merge(parent::scenarios(), [
-            self::SCENARIO_UPDATE => ['firstname', 'lastname', 'email', 'username', 'password', 'password_repeat']
+            self::SCENARIO_UPDATE => ['firstname', 'lastname', 'email', 'username', 'password', 'password_repeat','admin']
         ]);
     }
 
@@ -74,7 +72,6 @@ class User extends ActiveRecord implements IdentityInterface
             ['status', 'default', 'value' => self::STATUS_INACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
             ['password', 'string', 'min' => 8],
-
             ['admin', 'default', 'value' => 0],
             ['password_repeat', 'compare', 'compareAttribute' => 'password'],
             ['username', 'unique', 'targetClass' => self::class, 'message' => 'This username has already been taken.'],
@@ -99,8 +96,6 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Finds user by username
-     *
      * @param string $username
      * @return static|null
      */
@@ -110,7 +105,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * @param string $token password reset token
+     * @param string $token
      * @return static|null
      */
     public static function findByPasswordResetToken($token)
@@ -176,8 +171,8 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * @param string $password password to validate
-     * @return bool if password provided is valid for current user
+     * @param string $password
+     * @return bool
      */
     public function validatePassword($password)
     {
@@ -185,6 +180,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
+
 
      * @param string $password
      */
@@ -198,19 +194,19 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->auth_key = Yii::$app->security->generateRandomString();
     }
-
-
     public function generatePasswordResetToken()
     {
         $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
     }
-
 
     public function generateEmailVerificationToken()
     {
         $this->verification_token = Yii::$app->security->generateRandomString() . '_' . time();
     }
 
+    /**
+
+     */
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;

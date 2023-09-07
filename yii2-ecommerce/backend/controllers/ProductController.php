@@ -9,9 +9,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 
-/**
- * ProductController implements the CRUD actions for Product model.
- */
+
 class ProductController extends Controller
 {
     /**
@@ -33,8 +31,6 @@ class ProductController extends Controller
     }
 
     /**
-     * Lists all Product models.
-     *
      * @return string
      */
     public function actionIndex()
@@ -49,10 +45,9 @@ class ProductController extends Controller
     }
 
     /**
-     * Displays a single Product model.
      * @param int $id ID
      * @return string
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException
      */
     public function actionView($id)
     {
@@ -62,8 +57,6 @@ class ProductController extends Controller
     }
 
     /**
-     * Creates a new Product model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
@@ -85,11 +78,9 @@ class ProductController extends Controller
     }
 
     /**
-     * Updates an existing Product model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $id ID
+     * @param int $id
      * @return string|\yii\web\Response
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException
      */
     public function actionUpdate($id)
     {
@@ -105,11 +96,9 @@ class ProductController extends Controller
     }
 
     /**
-     * Deletes an existing Product model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException
      */
     public function actionDelete($id)
     {
@@ -119,11 +108,10 @@ class ProductController extends Controller
     }
 
     /**
-     * Finds the Product model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $id ID
-     * @return Product the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
+
+     * @param int $id
+     * @return Product
+     * @throws NotFoundHttpException
      */
     protected function findModel($id)
     {

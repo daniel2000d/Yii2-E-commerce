@@ -14,7 +14,7 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use backend\models\LoginForm;
+use common\models\LoginForm;
 
 /**
  * Site controller
@@ -134,8 +134,6 @@ class SiteController extends Controller
             'labels' => $labels,
             'countries' => $countryLabels,
             'bgColors' => $bgColors,
-            'countries' => ArrayHelper::getColumn($countriesData, 'country'),
-
             'countriesData' => ArrayHelper::getColumn($countriesData, 'total_price'),
         ]);
     }
